@@ -540,10 +540,10 @@
   try {
     // Multiple fallback methods to load the GeoJSON data
     const GEOJSON_URLS = [
-      "education-data.geojson",  // Relative path (primary)
-      "https://centristnation.github.io/test/education-data.geojson",  // Direct GitHub Pages URL
-      "https://raw.githubusercontent.com/centristnation/test/main/education-data.geojson"  // Raw GitHub URL
-    ];
+  "https://centristnation.github.io/test/education-data.geojson",  // ✅ Try the known working GitHub Pages URL first
+  "education-data.geojson",  // Relative path (works if file is in same folder as index.html)
+  "https://raw.githubusercontent.com/centristnation/test/main/education-data.geojson"  // Raw GitHub URL
+];
     
     let geojson;
     let features;
