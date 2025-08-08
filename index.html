@@ -508,12 +508,6 @@
 
 <script>
 (async function(){
-  // Use direct GitHub Pages URL for reliable access
-  const GEOJSON_FILE = "https://centristnation.github.io/test/education-data.geojson";
-  
-  // Alternative: Use relative path (if file structure is correct)
-  // const GEOJSON_FILE = "education-data.geojson";
-  
   // Tab functionality
   function initTabs() {
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -1131,27 +1125,38 @@
       <div class="section">
         <div style="text-align: center; color: #ef4444; padding: 30px; line-height: 1.6;">
           <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 16px;"></i>
-          <h3>CORS Error - File Access Blocked</h3>
-          <p><strong>The browser is blocking access to your local GeoJSON file.</strong></p>
+          <h3>GeoJSON File Not Found</h3>
+          <p><strong>Could not load education-data.geojson from GitHub</strong></p>
           
           <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin: 20px 0; text-align: left;">
-            <h4 style="margin-top: 0; color: #667eea;"><i class="fas fa-lightbulb"></i> Quick Solutions:</h4>
-            <p><strong>1. Use VS Code Live Server:</strong><br>
-            • Install "Live Server" extension<br>
-            • Right-click HTML file → "Open with Live Server"</p>
+            <h4 style="margin-top: 0; color: #667eea;"><i class="fas fa-search"></i> Debug Steps:</h4>
             
-            <p><strong>2. Use Python (if installed):</strong><br>
-            • Open terminal in this folder<br>
-            • Run: <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px;">python -m http.server 8000</code><br>
-            • Open: http://localhost:8000</p>
+            <p><strong>1. Test if your file exists:</strong><br>
+            <a href="https://centristnation.github.io/test/education-data.geojson" 
+               target="_blank" style="color: #667eea; text-decoration: underline;">
+               Click here to test your GeoJSON file
+            </a></p>
             
-            <p><strong>3. Alternative:</strong><br>
-            • Copy your GeoJSON content<br>
-            • Add to HTML before &lt;/script&gt;:<br>
-            <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px;">window.EDUCATION_DATA = {your GeoJSON data}</code></p>
+            <p><strong>2. Check your file name:</strong><br>
+            • Must be exactly: <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px;">education-data.geojson</code><br>
+            • In same folder as index.html<br>
+            • No extra spaces or characters</p>
+            
+            <p><strong>3. Check file contents:</strong><br>
+            • Must be valid JSON format<br>
+            • Test at: <a href="https://geojsonlint.com/" target="_blank" style="color: #667eea;">geojsonlint.com</a></p>
+            
+            <p><strong>4. Alternative - Embed data:</strong><br>
+            Add before &lt;/script&gt;:<br>
+            <code style="background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px; display: block; margin-top: 8px;">
+window.EDUCATION_DATA = {<br>
+&nbsp;&nbsp;"type": "FeatureCollection",<br>
+&nbsp;&nbsp;"features": [/* your data here */]<br>
+};
+            </code></p>
           </div>
           
-          <p style="font-size: 14px; opacity: 0.8;">This is a browser security feature when opening HTML files directly.</p>
+          <p style="font-size: 14px; opacity: 0.8;">Repository: centristnation/test</p>
         </div>
       </div>
     `;
